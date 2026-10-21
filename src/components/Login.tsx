@@ -1,5 +1,6 @@
 import { useState, type FormEvent } from "react";
 import { supabase } from "../integration/supabase";
+import { CrochetHeart, FloralCluster, LilyDefs, PressedFlower, Sprig } from "./Lilies";
 import "./Login.css";
 
 export default function Login() {
@@ -25,12 +26,22 @@ export default function Login() {
 
   return (
     <main className="login-page">
-      <section className="login-card" aria-labelledby="login-title">
-        <span className="login-flower" aria-hidden="true">♡</span>
-        <p className="login-kicker">a little place for us</p>
-        <h1 id="login-title">Welcome <em>home</em></h1>
-        <p className="login-copy">Sign in to open our little corner.</p>
+      <LilyDefs />
+      <div className="login-garden" aria-hidden="true">
+        <FloralCluster className="login-bloom login-bloom--tl" />
+        <FloralCluster className="login-bloom login-bloom--tr" variant="b" />
+        <FloralCluster className="login-bloom login-bloom--bl" variant="b" />
+        <FloralCluster className="login-bloom login-bloom--br" />
+        <PressedFlower className="login-pressed login-pressed--one" />
+        <PressedFlower className="login-pressed login-pressed--two" />
+        <PressedFlower className="login-pressed login-pressed--three" />
+        <Sprig className="login-sprig login-sprig--one" />
+        <Sprig className="login-sprig login-sprig--two" />
+        <CrochetHeart className="login-heart login-heart--one" />
+        <CrochetHeart className="login-heart login-heart--two" />
+      </div>
 
+      <section className="login-card" aria-label="Sign in">
         <form className="login-form" onSubmit={handleSubmit}>
           <label htmlFor="login-email">Email</label>
           <input

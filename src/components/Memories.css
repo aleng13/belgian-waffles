@@ -1,5 +1,5 @@
 .memories {
-  padding-top: clamp(2.75rem, 5vw, 4.25rem);
+  padding-top: clamp(2rem, 4vw, 3rem);
 }
 
 .photo-upload {

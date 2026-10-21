@@ -8,7 +8,6 @@ import Memories from "./components/Memories";
 import Songs from "./components/Songs";
 import TimeTogether from "./components/TimeTogether";
 import Quiz from "./components/Quiz";
-import ScrapbookDivider from "./components/ScrapbookDivider";
 import { supabase, supabaseConfigured, supabaseConfigurationError } from "./integration/supabase";
 
 export default function App() {
@@ -84,13 +83,9 @@ export default function App() {
       <Nav />
       <main>
         <Hero />
-        <ScrapbookDivider />
         <Memories />
-        <ScrapbookDivider />
         <Songs />
-        <ScrapbookDivider />
         <TimeTogether />
-        <ScrapbookDivider />
         <Quiz />
       </main>
       <footer className="site-footer">

@@ -20,6 +20,34 @@
   transform: rotate(28deg) scale(0.85);
 }
 
+.spotify-playlist-card {
+  width: min(100%, 660px);
+  margin: 0 auto 1.5rem;
+  padding: clamp(0.65rem, 2.5vw, 1.15rem);
+  border: 1px solid rgba(120, 95, 70, 0.24);
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.38), transparent 48%),
+    rgba(251, 247, 238, 0.72);
+  box-shadow: 0 12px 24px rgba(60, 40, 30, 0.12);
+}
+
+.spotify-playlist-note {
+  margin-bottom: 0.7rem;
+  color: var(--ink-soft);
+  font-family: var(--font-script);
+  font-size: clamp(1.2rem, 3vw, 1.55rem);
+  line-height: 1.2;
+  text-align: center;
+}
+
+.spotify-playlist-embed {
+  display: block;
+  min-height: 384px;
+  border: 0;
+  border-radius: 12px;
+  background: #121212;
+}
+
 @media (max-width: 760px) {
   .songs-flower--a {
     left: 2%;
@@ -29,5 +57,11 @@
   .songs-flower--b {
     right: 3%;
     bottom: 3%;
+  }
+}
+
+@media (max-width: 480px) {
+  .spotify-playlist-embed {
+    height: 384px;
   }
 }

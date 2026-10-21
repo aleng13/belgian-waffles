@@ -140,12 +140,24 @@ async function createChallenge(verifier: string): Promise<string> {
 
 function readToken(): SpotifyToken | null {
   sessionStorage.removeItem(LEGACY_TOKEN_STORAGE_KEY);
-  const raw = sessionStorage.getItem(TOKEN_STORAGE_KEY);
+  const stored = localStorage.getItem(TOKEN_STORAGE_KEY);
+  const sessionStored = sessionStorage.getItem(TOKEN_STORAGE_KEY);
+  const raw = stored ?? sessionStored;
   if (!raw) return null;
   try {
     const token = JSON.parse(raw) as SpotifyToken;
-    return token.access_token && Number.isFinite(token.expires_at) ? token : null;
+    if (!token.access_token || !Number.isFinite(token.expires_at)) {
+      localStorage.removeItem(TOKEN_STORAGE_KEY);
+      sessionStorage.removeItem(TOKEN_STORAGE_KEY);
+      return null;
+    }
+    if (!stored) {
+      localStorage.setItem(TOKEN_STORAGE_KEY, raw);
+      sessionStorage.removeItem(TOKEN_STORAGE_KEY);
+    }
+    return token;
   } catch {
+    localStorage.removeItem(TOKEN_STORAGE_KEY);
     sessionStorage.removeItem(TOKEN_STORAGE_KEY);
     return null;
   }
@@ -153,7 +165,8 @@ function readToken(): SpotifyToken | null {
 
 function storeToken(token: Omit<SpotifyToken, "expires_at">): SpotifyToken {
   const session: SpotifyToken = { ...token, expires_at: Date.now() + token.expires_in * 1000 };
-  sessionStorage.setItem(TOKEN_STORAGE_KEY, JSON.stringify(session));
+  localStorage.setItem(TOKEN_STORAGE_KEY, JSON.stringify(session));
+  sessionStorage.removeItem(TOKEN_STORAGE_KEY);
   return session;
 }
 
@@ -236,7 +249,7 @@ export async function getSpotifyAccessToken(): Promise<string | null> {
   if (token.expires_at > Date.now() + 60_000) return token.access_token;
 
   if (!token.refresh_token) {
-    sessionStorage.removeItem(TOKEN_STORAGE_KEY);
+    localStorage.removeItem(TOKEN_STORAGE_KEY);
     return null;
   }
 
@@ -250,7 +263,7 @@ export async function getSpotifyAccessToken(): Promise<string | null> {
     }),
   });
   if (!response.ok) {
-    sessionStorage.removeItem(TOKEN_STORAGE_KEY);
+    localStorage.removeItem(TOKEN_STORAGE_KEY);
     throw new Error(`Spotify session expired (${response.status}). Please connect again.`);
   }
 
@@ -263,6 +276,7 @@ export async function getSpotifyAccessToken(): Promise<string | null> {
 }
 
 export function disconnectSpotify(): void {
+  localStorage.removeItem(TOKEN_STORAGE_KEY);
   sessionStorage.removeItem(TOKEN_STORAGE_KEY);
 }
 
