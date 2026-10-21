@@ -1,0 +1,77 @@
+.us {
+  overflow-x: clip;
+}
+
+.us-lily {
+  width: clamp(200px, 34vw, 440px);
+  bottom: -8%;
+  left: -8%;
+  transform: scaleY(-1);
+  opacity: 0.92;
+}
+
+.ticket-row {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(0.7rem, 2.4vw, 1.6rem);
+  max-width: 44rem;
+  margin: 0 auto;
+}
+
+.ticket {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.7rem 0.4rem 1.2rem;
+  background:
+    repeating-linear-gradient(180deg, transparent 0 1.4rem, rgba(117, 66, 71, 0.07) 1.4rem calc(1.4rem + 1px)),
+    linear-gradient(160deg, #f6ecd9, #e8d8bd);
+  text-align: center;
+}
+
+.ticket-tape {
+  top: 0.35rem;
+  left: 50%;
+  width: 3.4rem;
+  height: 1.05rem;
+  margin-left: -1.7rem;
+  transform: rotate(-3deg);
+}
+
+/* letterpress: ink pressed *into* the paper */
+.ticket-value {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(2rem, 7.2vw, 3.6rem);
+  line-height: 1;
+  font-variant-numeric: tabular-nums lining-nums;
+  color: #8a4e55;
+  text-shadow:
+    0 1px 0 rgba(255, 252, 244, 0.9),
+    0 -1px 0 rgba(70, 40, 40, 0.18);
+  min-width: 2ch;
+}
+
+.ticket-label {
+  margin-top: 0.55rem;
+  font-size: clamp(0.58rem, 1.7vw, 0.72rem);
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+.us-caption {
+  margin-top: 2.4rem;
+  text-align: center;
+}
+
+@media (max-width: 480px) {
+  .ticket {
+    padding: 1.5rem 0.2rem 1rem;
+  }
+
+  .ticket-label {
+    letter-spacing: 0.14em;
+  }
+}

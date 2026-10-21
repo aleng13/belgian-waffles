@@ -1,0 +1,276 @@
+/* ==========================================================================
+   Base: palette, paper texture, typography, shared scrapbook pieces
+   ========================================================================== */
+
+:root {
+  --parchment: #f3e9d7;
+  --paper: #e8d8bd;
+  --rose: #b9787e;
+  --rose-ink: #754247;
+  --sage: #858c70;
+  --lavender: #b7a3bd;
+  --brown: #725744;
+  --gold: #f5d98a;
+  --ink: #49342e;
+  --ink-soft: #6a5146;
+
+  --font-display: "Cormorant Garamond", "Cormorant", Georgia, "Times New Roman", serif;
+  --font-body: "Lora", Georgia, "Times New Roman", serif;
+  --font-script: "Caveat", "Segoe Script", "Bradley Hand", "Comic Sans MS", cursive;
+
+  --nav-h: 3.4rem;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--parchment);
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Layered stationery: warm washes + paper grain + fine linen weave. Fixed, so it never scrolls. */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 70% 50% at 12% 8%, rgba(255, 250, 236, 0.85), transparent 60%),
+    radial-gradient(ellipse 60% 45% at 92% 30%, rgba(214, 185, 150, 0.3), transparent 65%),
+    radial-gradient(ellipse 80% 50% at 18% 88%, rgba(183, 163, 189, 0.15), transparent 60%),
+    radial-gradient(ellipse 55% 40% at 88% 96%, rgba(185, 120, 126, 0.13), transparent 60%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .45 0 0 0 0 .34 0 0 0 0 .25 0 0 0 .5 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E"),
+    repeating-linear-gradient(0deg, rgba(114, 87, 68, 0.035) 0 1px, transparent 1px 3px),
+    repeating-linear-gradient(90deg, rgba(114, 87, 68, 0.03) 0 1px, transparent 1px 3px),
+    var(--parchment);
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+button {
+  font: inherit;
+}
+
+a {
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 2px solid var(--rose-ink);
+  outline-offset: 3px;
+}
+
+.skip-link {
+  position: absolute;
+  left: 0.75rem;
+  top: -4rem;
+  z-index: 100;
+  padding: 0.6rem 1rem;
+  background: var(--parchment);
+  border: 1px solid var(--rose-ink);
+  color: var(--rose-ink);
+  text-decoration: none;
+}
+
+.skip-link:focus {
+  top: 0.75rem;
+}
+
+/* ---------- sections ---------- */
+
+.section {
+  position: relative;
+  padding: clamp(2.75rem, 5vw, 4.25rem) clamp(1rem, 4vw, 2.5rem);
+  scroll-margin-top: var(--nav-h);
+}
+
+.section-inner {
+  position: relative;
+  z-index: 2;
+  max-width: 1120px;
+  margin: 0 auto;
+}
+
+.section-head {
+  text-align: center;
+  margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
+}
+
+.kicker {
+  display: inline-block;
+  font-family: var(--font-script);
+  font-size: clamp(1.35rem, 3.4vw, 1.7rem);
+  line-height: 1.2;
+  color: var(--rose-ink);
+  transform: rotate(-2deg);
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(2.2rem, 6.4vw, 3.8rem);
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  color: var(--rose-ink);
+  margin: 0.15rem 0 0.7rem;
+}
+
+.section-title em {
+  font-style: italic;
+  color: var(--rose);
+}
+
+.section-lede {
+  max-width: 34rem;
+  margin: 0 auto;
+  color: var(--ink-soft);
+  font-style: italic;
+}
+
+.hairline {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  margin: 1.2rem auto 0;
+  max-width: 14rem;
+  color: var(--rose);
+  font-size: 0.85rem;
+}
+
+.hairline::before,
+.hairline::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(117, 66, 71, 0.4));
+}
+
+.hairline::after {
+  transform: scaleX(-1);
+}
+
+.hint {
+  display: inline-block;
+  font-family: var(--font-script);
+  font-size: 1.15rem;
+  color: var(--ink-soft);
+  opacity: 0.85;
+}
+
+/* ---------- scroll reveal (gentle, never blocks reading) ---------- */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(14px);
+  transition:
+    opacity 800ms ease,
+    transform 800ms cubic-bezier(0.2, 0.75, 0.25, 1);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* ---------- floral decoration shared rules ---------- */
+
+.floral {
+  position: absolute;
+  pointer-events: none;
+  user-select: none;
+  z-index: 1;
+  height: auto;
+  aspect-ratio: 1;
+  filter: drop-shadow(0 6px 10px rgba(117, 66, 71, 0.12));
+}
+
+/* ---------- torn paper + tape ---------- */
+
+.torn-wrap {
+  filter: drop-shadow(0 2px 3px rgba(70, 48, 36, 0.22)) drop-shadow(0 10px 14px rgba(70, 48, 36, 0.12));
+}
+
+.torn {
+  clip-path: polygon(
+    0% 3%, 4% 0%, 9% 2.5%, 15% 0.5%, 22% 3%, 30% 0%, 38% 2%, 47% 0.3%, 55% 2.8%, 63% 0.5%,
+    72% 3%, 80% 0.4%, 88% 2.6%, 95% 0.6%, 100% 2%,
+    100% 97%, 94% 100%, 86% 97.4%, 77% 99.8%, 69% 97%, 60% 100%, 51% 97.5%, 42% 99.7%,
+    33% 97.2%, 24% 100%, 15% 97.6%, 7% 99.6%, 0% 97%
+  );
+}
+
+.tape {
+  position: absolute;
+  width: 4.2rem;
+  height: 1.3rem;
+  background: rgba(183, 163, 189, 0.5);
+  background-image: repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.25) 0 2px, transparent 2px 6px);
+  box-shadow: 0 1px 2px rgba(70, 48, 36, 0.15);
+  pointer-events: none;
+}
+
+.tape--rose {
+  background-color: rgba(185, 120, 126, 0.42);
+}
+
+.tape--sage {
+  background-color: rgba(133, 140, 112, 0.45);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.site-footer {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 1rem 1rem 3rem;
+  font-family: var(--font-script);
+  font-size: 1.3rem;
+  color: var(--ink-soft);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}

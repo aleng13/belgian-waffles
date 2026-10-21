@@ -1,0 +1,33 @@
+.songs-flower {
+  position: absolute;
+  width: 46px;
+  height: auto;
+  opacity: 0.85;
+  pointer-events: none;
+  filter: drop-shadow(0 1px 1px rgba(60, 40, 30, 0.2));
+  z-index: 1;
+}
+
+.songs-flower--a {
+  top: 8%;
+  left: 6%;
+  transform: rotate(-24deg);
+}
+
+.songs-flower--b {
+  bottom: 9%;
+  right: 7%;
+  transform: rotate(28deg) scale(0.85);
+}
+
+@media (max-width: 760px) {
+  .songs-flower--a {
+    left: 2%;
+    top: 4%;
+  }
+
+  .songs-flower--b {
+    right: 3%;
+    bottom: 3%;
+  }
+}
