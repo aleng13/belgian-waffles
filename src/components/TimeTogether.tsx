@@ -3,6 +3,7 @@ import { RELATIONSHIP_START_ISO } from "../config/content";
 import { useNow } from "../hooks/useNow";
 import SectionHead from "./SectionHead";
 import { FloralCluster } from "./Lilies";
+import ScrapbookAccents from "./ScrapbookAccents";
 import "./TimeTogether.css";
 
 function split(ms: number) {
@@ -49,6 +50,7 @@ export default function TimeTogether({ startIso = RELATIONSHIP_START_ISO }: Prop
   return (
     <section className="section us" id="us" aria-labelledby="us-title">
       <FloralCluster className="floral us-lily" variant="b" />
+      <ScrapbookAccents section="us" />
       <div className="section-inner">
         <SectionHead
           id="us-title"

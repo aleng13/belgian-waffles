@@ -314,25 +314,31 @@ export default function VinylPlayer() {
                 : "Connect Spotify to load the playlist tracks."}
           </p>
         ) : (
-          tracks.map((track, index) => (
-            <button
-              type="button"
-              key={`${track.uri}-${index}`}
-              className={`vinyl-track ${selectedIndex === index ? "is-selected" : ""}`}
-              onClick={() => void handleSelect(index)}
-              aria-pressed={selectedIndex === index}
-              disabled={busy}
-            >
-              <span className="vinyl-track-number">{String(index + 1).padStart(2, "0")}</span>
-              <span className="vinyl-track-copy">
-                <span className="vinyl-track-title">{track.title}</span>
-                <span className="vinyl-track-artist">{track.artist}</span>
-              </span>
-              <span className="vinyl-track-heart" aria-hidden="true">
-                {activeTrackUri === track.uri && playing ? "♫" : selectedIndex === index ? "♥" : "♡"}
-              </span>
-            </button>
-          ))
+          <div
+            className={`vinyl-track-list-scroll${tracks.length > 5 ? " has-many-tracks" : ""}`}
+            aria-label={tracks.length > 5 ? "Scrollable playlist, more than five songs" : undefined}
+            tabIndex={tracks.length > 5 ? 0 : undefined}
+          >
+            {tracks.map((track, index) => (
+              <button
+                type="button"
+                key={`${track.uri}-${index}`}
+                className={`vinyl-track ${selectedIndex === index ? "is-selected" : ""}`}
+                onClick={() => void handleSelect(index)}
+                aria-pressed={selectedIndex === index}
+                disabled={busy}
+              >
+                <span className="vinyl-track-number">{String(index + 1).padStart(2, "0")}</span>
+                <span className="vinyl-track-copy">
+                  <span className="vinyl-track-title">{track.title}</span>
+                  <span className="vinyl-track-artist">{track.artist}</span>
+                </span>
+                <span className="vinyl-track-heart" aria-hidden="true">
+                  {activeTrackUri === track.uri && playing ? "♫" : selectedIndex === index ? "♥" : "♡"}
+                </span>
+              </button>
+            ))}
+          </div>
         )}
         {playlistDiagnostics && tracks.length > 0 && playlistDiagnostics.playableItems < playlistDiagnostics.totalItems && (
           <p className="spotify-diagnostic" role="status">

@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { PARTNER_NAME, QUIZ, QUIZ_NOTE, QUIZ_RESULTS, SHOW_EDIT_HINTS } from "../config/content";
 import SectionHead from "./SectionHead";
+import ScrapbookAccents from "./ScrapbookAccents";
 import "./Quiz.css";
 
 const LETTERS = ["A", "B", "C", "D"];
@@ -54,6 +55,7 @@ export default function Quiz() {
 
   return (
     <section className="section quiz" id="quiz" aria-labelledby="quiz-title">
+      <ScrapbookAccents section="quiz" />
       <div className="section-inner">
         <SectionHead
           id="quiz-title"

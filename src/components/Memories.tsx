@@ -6,6 +6,7 @@ import { useMemories } from "../hooks/useMemories";
 import Lightbox from "./Lightbox";
 import MemoryPhoto from "./MemoryPhoto";
 import { CrochetHeart, PressedFlower } from "./Lilies";
+import ScrapbookAccents from "./ScrapbookAccents";
 import SectionHead from "./SectionHead";
 import "./Memories.css";
 
@@ -18,7 +19,7 @@ function rand(seed: number): number {
 const clamp = (v: number, lo: number, hi: number) => Math.min(hi, Math.max(lo, v));
 
 function photosPerRow(width: number): number {
-  if (width < 560) return 2;
+  if (width < 560) return 3;
   if (width < 900) return 3;
   return 4;
 }
@@ -46,7 +47,7 @@ function HangingRow({
 }: RowProps) {
   const mobile = width < 560;
   const slot = width / perRow;
-  const pw = Math.round(clamp(slot - (mobile ? 24 : 44), 104, 232)); // Polaroid width
+  const pw = Math.round(clamp(slot - (mobile ? 14 : 44), mobile ? 80 : 104, 232)); // Polaroid width
   const cardH = pw + 28;
   const hangH = 14 + cardH; // pin zone + card
   const y0 = 16;
@@ -285,6 +286,7 @@ export default function Memories() {
 
   return (
     <section className="section memories" id="memories" aria-labelledby="memories-title">
+      <ScrapbookAccents section="memories" />
       <div className="section-inner">
         <SectionHead
           id="memories-title"

@@ -49,13 +49,13 @@ export default function Hero() {
       </span>
 
       <div className="hero-content">
-        <p className="paper-label">a little love letter</p>
+        <p className="paper-label">TO MY FAVOURITE PERSON</p>
 
         <h1 className="hero-title" id="hero-title">
           our little corner <em>of forever</em>
         </h1>
 
-        <p className="hero-sub">for all the little moments that became my favourite memories</p>
+        <p className="hero-sub">for all the little moments that became our favourite memories</p>
 
         {since && (
           <p className="hero-since" aria-hidden="true">
@@ -65,7 +65,7 @@ export default function Hero() {
 
         <div className="hero-note-wrap torn-wrap">
           <p className="hero-note torn">
-            You make even the ordinary moments feel like a beautiful chapter in my life.
+            With you, even the smallest moments become memories I want to keep forever.
           </p>
         </div>
       </div>

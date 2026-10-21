@@ -1,0 +1,289 @@
+.scrapbook-accents {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  user-select: none;
+}
+
+.scrap-washi {
+  position: absolute;
+  width: clamp(82px, 10vw, 138px);
+  height: 25px;
+  opacity: 0.68;
+  background:
+    repeating-linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0 3px, transparent 3px 7px),
+    rgba(185, 120, 126, 0.46);
+  clip-path: polygon(0 7%, 8% 0, 17% 6%, 27% 1%, 37% 7%, 47% 0, 58% 6%, 69% 1%, 81% 7%, 91% 0, 100% 5%, 98% 95%, 88% 100%, 76% 94%, 65% 100%, 54% 94%, 43% 100%, 31% 94%, 20% 100%, 9% 95%, 1% 100%);
+}
+
+.scrap-stamp {
+  position: absolute;
+  display: grid;
+  place-items: center;
+  width: 40px;
+  aspect-ratio: 1;
+  border: 1px dashed rgba(117, 66, 71, 0.46);
+  color: rgba(117, 66, 71, 0.62);
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  transform: rotate(9deg);
+}
+
+.scrap-pressed-flower {
+  position: absolute;
+  width: clamp(32px, 4vw, 52px);
+  height: auto;
+  opacity: 0.72;
+  filter: drop-shadow(0 2px 2px rgba(60, 40, 30, 0.16));
+  transform: rotate(-12deg);
+}
+
+.scrap-dangling-heart {
+  position: absolute;
+  width: 28px;
+  height: auto;
+  opacity: 0.66;
+  transform: rotate(9deg);
+}
+
+.scrap-sprig {
+  position: absolute;
+  width: clamp(72px, 9vw, 118px);
+  height: auto;
+  opacity: 0.62;
+  filter: drop-shadow(0 1px 1px rgba(60, 40, 30, 0.12));
+}
+
+.scrap-pressed-flower--small {
+  width: clamp(23px, 2.8vw, 36px);
+  opacity: 0.58;
+}
+
+.scrap-doodle {
+  position: absolute;
+  color: rgba(117, 66, 71, 0.58);
+  font-family: var(--font-display);
+  line-height: 1;
+}
+
+.scrap-doodle--sparkle {
+  font-size: 1.4rem;
+}
+
+.scrap-doodle--heart {
+  font-size: 1.1rem;
+}
+
+.scrapbook-accents--memories .scrap-washi {
+  top: 15%;
+  right: 5%;
+  transform: rotate(11deg);
+}
+
+.scrapbook-accents--memories .scrap-stamp {
+  top: 54%;
+  left: 3%;
+}
+
+.scrapbook-accents--memories .scrap-pressed-flower {
+  right: 7%;
+  bottom: 13%;
+}
+
+.scrapbook-accents--memories .scrap-dangling-heart {
+  top: 28%;
+  right: 2%;
+}
+
+.scrapbook-accents--memories .scrap-sprig {
+  left: 3%;
+  bottom: 7%;
+  transform: rotate(-20deg);
+}
+
+.scrapbook-accents--memories .scrap-pressed-flower--small {
+  top: 70%;
+  right: 18%;
+  transform: rotate(18deg);
+}
+
+.scrapbook-accents--memories .scrap-doodle--sparkle {
+  top: 33%;
+  left: 8%;
+  transform: rotate(12deg);
+}
+
+.scrapbook-accents--memories .scrap-doodle--heart {
+  right: 15%;
+  bottom: 32%;
+  transform: rotate(-12deg);
+}
+
+.scrapbook-accents--songs .scrap-washi {
+  top: 10%;
+  left: 4%;
+  background-color: rgba(133, 140, 112, 0.42);
+  transform: rotate(-9deg);
+}
+
+.scrapbook-accents--songs .scrap-stamp {
+  right: 4%;
+  bottom: 22%;
+}
+
+.scrapbook-accents--songs .scrap-pressed-flower {
+  right: 3%;
+  top: 27%;
+  transform: rotate(14deg);
+}
+
+.scrapbook-accents--songs .scrap-dangling-heart {
+  left: 5%;
+  bottom: 17%;
+}
+
+.scrapbook-accents--songs .scrap-sprig {
+  left: 2%;
+  top: 36%;
+  transform: rotate(-24deg);
+}
+
+.scrapbook-accents--songs .scrap-pressed-flower--small {
+  left: 18%;
+  bottom: 16%;
+  transform: rotate(-18deg);
+}
+
+.scrapbook-accents--songs .scrap-doodle--sparkle {
+  top: 22%;
+  right: 16%;
+}
+
+.scrapbook-accents--songs .scrap-doodle--heart {
+  left: 14%;
+  top: 66%;
+}
+
+.scrapbook-accents--us .scrap-washi {
+  top: 12%;
+  right: 6%;
+  background-color: rgba(183, 163, 189, 0.48);
+  transform: rotate(7deg);
+}
+
+.scrapbook-accents--us .scrap-stamp {
+  left: 5%;
+  bottom: 20%;
+}
+
+.scrapbook-accents--us .scrap-pressed-flower {
+  top: 35%;
+  right: 2%;
+}
+
+.scrapbook-accents--us .scrap-dangling-heart {
+  top: 22%;
+  left: 6%;
+}
+
+.scrapbook-accents--us .scrap-sprig {
+  right: 4%;
+  bottom: 8%;
+  transform: rotate(18deg);
+}
+
+.scrapbook-accents--us .scrap-pressed-flower--small {
+  left: 19%;
+  top: 66%;
+  transform: rotate(-16deg);
+}
+
+.scrapbook-accents--us .scrap-doodle--sparkle {
+  top: 45%;
+  left: 8%;
+}
+
+.scrapbook-accents--us .scrap-doodle--heart {
+  right: 16%;
+  top: 68%;
+}
+
+.scrapbook-accents--quiz .scrap-washi {
+  top: 9%;
+  right: 5%;
+  transform: rotate(12deg);
+}
+
+.scrapbook-accents--quiz .scrap-stamp {
+  left: 4%;
+  bottom: 16%;
+}
+
+.scrapbook-accents--quiz .scrap-pressed-flower {
+  right: 4%;
+  bottom: 17%;
+  transform: rotate(15deg);
+}
+
+.scrapbook-accents--quiz .scrap-dangling-heart {
+  top: 21%;
+  left: 5%;
+}
+
+.scrapbook-accents--quiz .scrap-sprig {
+  left: 3%;
+  top: 45%;
+  transform: rotate(-17deg);
+}
+
+.scrapbook-accents--quiz .scrap-pressed-flower--small {
+  right: 18%;
+  top: 20%;
+  transform: rotate(-20deg);
+}
+
+.scrapbook-accents--quiz .scrap-doodle--sparkle {
+  top: 62%;
+  right: 11%;
+}
+
+.scrapbook-accents--quiz .scrap-doodle--heart {
+  left: 16%;
+  top: 26%;
+}
+
+@media (max-width: 760px) {
+  .scrapbook-accents--memories .scrap-stamp,
+  .scrapbook-accents--songs .scrap-stamp,
+  .scrapbook-accents--us .scrap-stamp,
+  .scrapbook-accents--quiz .scrap-stamp {
+    display: none;
+  }
+
+  .scrap-pressed-flower--small,
+  .scrap-doodle {
+    display: none;
+  }
+
+  .scrap-pressed-flower {
+    width: 30px;
+  }
+
+  .scrap-sprig {
+    width: 66px;
+  }
+
+  .scrap-dangling-heart {
+    width: 22px;
+  }
+
+  .scrapbook-accents--memories .scrap-washi,
+  .scrapbook-accents--songs .scrap-washi,
+  .scrapbook-accents--us .scrap-washi,
+  .scrapbook-accents--quiz .scrap-washi {
+    width: 76px;
+    height: 20px;
+  }
+}
